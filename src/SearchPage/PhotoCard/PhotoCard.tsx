@@ -49,7 +49,7 @@ class PhotoCard extends React.Component<PhotoCardProps, PhotoCardState> {
                 onMouseEnter={()=>{this.setState({isHovered: true})}}
                 onMouseLeave={()=>{this.setState({isHovered: false})}}
                 hoverable
-                style={{width: '350px', padding: '20px'}}
+                style={{padding: '10px'}}
                 >
                     {!this.props.photo &&  <Skeleton.Image />}
 
@@ -75,7 +75,7 @@ class PhotoCard extends React.Component<PhotoCardProps, PhotoCardState> {
                                 </Popover>
                             </Row>}
                         <Row>
-                            <img src={this.props.photo.urls.small} width={260} height={260}/>
+                            <img src={this.props.photo.urls.small} style={{maxWidth: '100%', height: 'auto',}} />
                         </Row>
                         <Row style={{position: "absolute", bottom: '5px'}}>
                             {this.state.isHovered && this.props.photo.user?.portfolio_url ? 
