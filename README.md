@@ -20,7 +20,7 @@
 
 
 ## Implementation
--Infinite scroller. This will make one api for a group of 5-10 images. As you scroll, another api call will be made to get the next group. This prevents unnecessarily large calls, but has a drawback of more calls in general. Please see *Important Notes* below.
+-Infinite scroller. This will make one api for a group of 10 images. As you scroll, another api call will be made to get the next group. This prevents unnecessarily large calls, but has a drawback of more calls in general. Please see *Important Notes* below.
 
 -Currently a call is made every change to the search according to the specs. I think this might need a discussion in considering waiting for 1) a space (aka: new word) and/or 2) waiting for the user stop typing. The reason is, if a person wants to search for "cats" they will make uncessary calls for "c" and "ca" bringing up irreleveant images such as "c", "cars", etc. 
 
