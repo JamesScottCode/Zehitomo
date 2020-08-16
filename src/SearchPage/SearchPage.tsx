@@ -50,7 +50,7 @@ class SearchPage extends React.Component<SearchPageProps, SearchPageState> {
 
     searchImages = (searchInput: string) => {
         if(searchInput !== this.state.searchInput) {
-            HttpService.UnsplashSearchPhoto(searchInput, 1, 5, {orientation: "portrait"}).then((res: any)=>{
+            HttpService.UnsplashSearchPhoto(searchInput, 1, 10, {orientation: "portrait"}).then((res: any)=>{
                 this.setState({
                     photoResults: res.results,
                     total: res.total,
@@ -93,32 +93,33 @@ class SearchPage extends React.Component<SearchPageProps, SearchPageState> {
         </Row>)
     }
 
-      handleInfiniteOnLoad = () => {
-        let data  = this.state.photoResults;
+    handleInfiniteOnLoad = () => {
+    let data  = this.state.photoResults;
+    this.setState({
+        loading: true,
+    });
+    if (data.length >= this.state.total) {
         this.setState({
-          loading: true,
+        hasMore: false,
+        loading: false,
         });
-        if (data.length >= this.state.total) {
-          this.setState({
-            hasMore: false,
-            loading: false,
-          });
-          return;
-        }
-        HttpService.UnsplashSearchPhoto(this.state.searchInput, this.state.currentPage+1, 5,).then((res: any)=>{
-            const joinedResults = this.state.photoResults.concat(res.results)
-            this.setState({
-                photoResults: joinedResults,
-                total: res.total,
-                totalPages: res.total_pages,
-                currentPage: this.state.currentPage+1,
-                loading: false
-            })
-        }).catch((err: any)=>{
-            message.error("There was an error in searching the images. You have most likely exceeded the number of requests allowed.", 5)
-            message.config({maxCount: 1})
+        return;
+    }
+    HttpService.UnsplashSearchPhoto(this.state.searchInput, this.state.currentPage+1, 10,).then((res: any)=>{
+        const joinedResults = this.state.photoResults.concat(res.results)
+
+        this.setState({
+            photoResults: joinedResults,
+            total: res.total,
+            totalPages: res.total_pages,
+            currentPage: this.state.currentPage+1,
+            loading: false
         })
-      };
+    }).catch((err: any)=>{
+        message.error("There was an error in searching the images. You have most likely exceeded the number of requests allowed.", 5)
+        message.config({maxCount: 1})
+    })
+    };
 
 
     render(): JSX.Element {
@@ -133,7 +134,7 @@ class SearchPage extends React.Component<SearchPageProps, SearchPageState> {
                 />
                 <Divider />
                 <InfiniteScroll
-                    pageStart={1}
+                    pageStart={0}
                     initialLoad={false}
                     loadMore={()=>this.handleInfiniteOnLoad()}
                     hasMore={!this.state.loading && this.state.hasMore}
@@ -142,7 +143,7 @@ class SearchPage extends React.Component<SearchPageProps, SearchPageState> {
                 >
                     {this.state.photoResults && this.getPhotoCards()}
                 </InfiniteScroll> 
-                {this.state.loading && this.state.hasMore && <Spin size='large' />}
+                {this.state.searchInput && this.state.hasMore && <Spin size='large' />}
             </Layout>
         )
     }
