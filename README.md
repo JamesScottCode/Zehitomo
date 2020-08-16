@@ -12,7 +12,7 @@
 
 
 ## Design Decisions
--Photo cards are kept uniform for the sake of quick development. This could be changed in the future simlar to https://unsplash.com/ 
+-Photo rowsare kept uniform for the sake of quick development. This could be changed in the future simlar to https://unsplash.com/ 
 
 -Cards, lists, and popups use the same minimal default theme for clarity.
 
@@ -28,7 +28,7 @@
 ## To do:
 -Add redux. This will prevent prop drilling and can keep a persistant state across components. For example, currently there is a passed prop 3 layers deep. For an application this small, it's ok, but reducers/selectors would be better for making a scalable application.
 
--Add responsiveness to the image cards (and other places as needed). For times-sake, the sizes are fixed for desktop, but would not work on mobile. 
+-Add better responsiveness to the image cards (and other places as needed).
 
 -Some typings related to unsplash API need to be made. Currently some objects such as "categories: Array<any>; " can be seen with any. Must go through unsplashse documentation and update the typing.
 
