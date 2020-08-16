@@ -1,44 +1,41 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How to install
+1) run 'npm install'
+2) run 'npm start'
+3) The project will run in browser at http://localhost:3000
 
-## Available Scripts
+## Development Technologies
+-React allows for easy scalibility and resuable components for things such as the image cards.
 
-In the project directory, you can run:
+-Typescript removes a lot of potential issues with plain Javascript
 
-### `npm start`
+-Ant Design http://https://ant.design/ allows for quick and already organized creation of components
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Design Decisions
+-Photo cards are kept uniform for the sake of quick development. This could be changed in the future simlar to https://unsplash.com/ 
 
-### `npm test`
+-Cards, lists, and popups use the same minimal default theme for clarity.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-Delete functions have an additional small popup to prevent accidental deletes.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Implementation
+-Infinite scroller. This will make one api for a group of 5-10 images. As you scroll, another api call will be made to get the next group. This prevents unnecessarily large calls, but has a drawback of more calls in general. Please see *Important Notes* below.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+-Currently a call is made every change to the search according to the specs. I think this might need a discussion in considering waiting for 1) a space (aka: new word) and/or 2) waiting for the user stop typing. The reason is, if a person wants to search for "cats" they will make uncessary calls for "c" and "ca" bringing up irreleveant images such as "c", "cars", etc. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## To do:
+-Add redux. This will prevent prop drilling and can keep a persistant state across components. For example, currently there is a passed prop 3 layers deep. For an application this small, it's ok, but reducers/selectors would be better for making a scalable application.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+-Add responsiveness to the image cards (and other places as needed). For times-sake, the sizes are fixed for desktop, but would not work on mobile. 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+-Some typings related to unsplash API need to be made. Currently some objects such as "categories: Array<any>; " can be seen with any. Must go through unsplashse documentation and update the typing.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+-Some components can be broken into smaller components for resuablility.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+-Add proper navigation.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Important Notes
+-The free version of unsplash limits to 50 calls per hour. The infinite scroll loader means this can quickly reach the limit if there's non-stop scrolling.
