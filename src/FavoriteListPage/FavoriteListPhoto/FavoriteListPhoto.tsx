@@ -6,8 +6,8 @@ import { DownloadOutlined } from '@ant-design/icons';
 export interface FavoriteListPhotoState {}
 
 export interface FavoriteListPhotoProps {
-    photo: PhotoResult
-    removePhotoFromList: Function
+    photo: PhotoResult;
+    removePhotoFromList: Function;
 }
 
 class FavoriteListPhoto extends React.Component<FavoriteListPhotoProps, FavoriteListPhotoState> {

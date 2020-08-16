@@ -56,9 +56,8 @@ class AddFavorite extends React.Component<AddFavoriteProps, AddFavoriteState> {
         },
       ];
 
-                                        //Must be typed as Array<any> to work with AntDesign component.
+    //Must be typed as Array<any> to work with AntDesign component.
     onSelectChange = (selectedRowKeys: Array<any>) => {
-        console.log('selectedRowKeys changed: ', selectedRowKeys);
         this.setState({ selectedRowKeys });
     };
 
@@ -113,7 +112,6 @@ class AddFavorite extends React.Component<AddFavoriteProps, AddFavoriteState> {
         }
     }
 
-    // TO DO: Use redux. Create reducer and selector for favorite list to reduce api calls. Can store in state but for sake of time I will make calls directly.
     render(): JSX.Element {
         const {  selectedRowKeys } = this.state;
         const rowSelection = {

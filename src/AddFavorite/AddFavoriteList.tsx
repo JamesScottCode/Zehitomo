@@ -8,7 +8,7 @@ export interface AddFavoriteListState {
 }
 
 export interface AddFavoriteListProps {
-    setListData: Function
+    setListData: Function;
 }
 
 class AddFavoriteList extends React.Component<AddFavoriteListProps, AddFavoriteListState> {
@@ -52,7 +52,6 @@ class AddFavoriteList extends React.Component<AddFavoriteListProps, AddFavoriteL
 
     // TO DO: Use redux. Create reducer and selector for favorite list to reduce api calls. Can store in state but for sake of time I will make calls directly.
     render(): JSX.Element {
-    
         return (
             <>
                 <Form.Item

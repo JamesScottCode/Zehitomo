@@ -1,24 +1,21 @@
-import React, { Context } from 'react';
+import React from 'react';
 import { Layout, Menu } from 'antd';
 import { Navigation } from '../Home';
 
-export interface HomeHeaderState {
-}
+export interface HomeHeaderState {}
 
 export interface HomeHeaderProps {
     setHomeState: Function;
 }
 
-const { Header, Content, Footer } = Layout;
+const { Header } = Layout;
 
 class HomeHeader extends React.Component<HomeHeaderProps, HomeHeaderState> {
-    state: HomeHeaderState = {
-    }
+    state: HomeHeaderState = {}
 
     render(): JSX.Element {
         return (
-            <Header>
-            
+          <Header>
             <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
               <Menu.Item key="1" onClick={()=> window.open("http://zehitomo.com", "_blank")}>  
                 <img src={require("assets/images/zehitomo-logo.png")} width="50" height="50" />

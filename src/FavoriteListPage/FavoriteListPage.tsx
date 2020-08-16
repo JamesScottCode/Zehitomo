@@ -1,9 +1,8 @@
 import React  from 'react';
-import { Layout, Divider, Row, Col, Table, Collapse, List, Space, Spin, Button, Form, Input, Skeleton, Popconfirm, message, Empty } from 'antd';
-import { MessageOutlined, LikeOutlined, SettingOutlined } from '@ant-design/icons';
+import { Layout, Divider, Row, Col, Table, Collapse, Spin, Button, Form, Input, Popconfirm, Empty } from 'antd';
+import { SettingOutlined } from '@ant-design/icons';
 import { HttpService, FavoriteList, PhotoResult } from '../services/HttpService';
 import Modal from 'antd/lib/modal/Modal';
-import Text from 'antd/lib/typography/Text';
 import FavoriteListPhoto from './FavoriteListPhoto/FavoriteListPhoto';
 import AddFavoriteList from '../AddFavorite/AddFavoriteList';
 
@@ -184,7 +183,6 @@ class FavoriteListPage extends React.Component<FavoriteListPageProps, FavoriteLi
               >
                   <AddFavoriteList setListData={()=>this.setFavoriteListData()} />
               </Modal>
-
 
               <Modal
                 title="Edit Favorites List"

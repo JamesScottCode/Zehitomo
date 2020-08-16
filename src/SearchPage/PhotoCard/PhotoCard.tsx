@@ -43,7 +43,6 @@ class PhotoCard extends React.Component<PhotoCardProps, PhotoCardState> {
         this.props.setFavoritePhotoIds()
     }
 
-
     render(): JSX.Element {
         return (
             <Card
@@ -85,7 +84,6 @@ class PhotoCard extends React.Component<PhotoCardProps, PhotoCardState> {
                                 </a> : this.state.isHovered && 'No user portfolio.'}
                         </Row>
                     </>}
-
                     <Modal
                         width={1000}
                         visible={this.state.showAddFavoriteModal}
@@ -93,7 +91,7 @@ class PhotoCard extends React.Component<PhotoCardProps, PhotoCardState> {
                         onCancel={()=>this.closeAddFavorite()}
                         footer={<></>}
                     >
-                        <AddFavorite closeAddFavorite={()=>this.closeAddFavorite()}  photo={this.props.photo} />
+                        <AddFavorite closeAddFavorite={()=>this.closeAddFavorite()} photo={this.props.photo} />
                     </Modal>
             </Card>
         )
