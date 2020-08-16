@@ -34,6 +34,8 @@
 
 -Some components can be broken into smaller components for resuablility.
 
+-Add proper navigation.
+
 
 ## Important Notes
 -The free version of unsplash limits to 50 calls per hour. The infinite scroll loader means this can quickly reach the limit if there's non-stop scrolling.
