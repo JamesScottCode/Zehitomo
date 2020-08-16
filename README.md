@@ -8,7 +8,7 @@
 
 -Typescript removes a lot of potential issues with plain Javascript
 
--Ant Design http://https://ant.design/ allows for quick and already organized creation of components
+-Ant Design https://ant.design/ allows for quick and already organized creation of components
 
 
 ## Design Decisions
