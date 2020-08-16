@@ -5,13 +5,19 @@
 
 ## Development Technologies
 -React allows for easy scalibility and resuable components for things such as the image cards.
+
 -Typescript removes a lot of potential issues with plain Javascript
+
 -Ant Design http://https://ant.design/ allows for quick and already organized creation of components
+
 
 ## Design Decisions
 -Photo cards are kept uniform for the sake of quick development. This could be changed in the future simlar to https://unsplash.com/ 
+
 -Cards, lists, and popups use the same minimal default theme for clarity.
+
 -Delete functions have an additional small popup to prevent accidental deletes.
+
 
 ## Implementation
 -Infinite scroller. This will make one api for a group of 5-10 images. As you scroll, another api call will be made to get the next group. This prevents unnecessarily large calls, but has a drawback of more calls in general. Please see *Important Notes* below.
